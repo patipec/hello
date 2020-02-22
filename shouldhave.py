@@ -10,9 +10,8 @@ while i < N-1:
             temp = numbers[j+1]
             numbers[j+1]=numbers[j]
             numbers[j]=temp
-        else:
-            j = j+1
-    else:
         j = j+1
+    i+=1
 else:
     print(numbers)
+    
