@@ -1,0 +1,6 @@
+[ ] lalal
+[x] Hello
+[x] "Dzien dobry"
+[x] Dzien dobry
+[x] Test
+[ ] icecreams
