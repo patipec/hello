@@ -1,3 +1,4 @@
+# hello
 
 def hello(name=""): #nadanie zmiennej default argument
     if len(name) > 0:
@@ -11,29 +12,6 @@ print(hello())
 # print hello
 def print_hello(name=""): # musi byc ta defaultowa wartosc nadana gdyby nic nie bylo jako zmienna name
 
-def hello(name):
-    return('Hello ' + name + "!")
-    if len(name) > 0:
-        hello(name)
-    else:
-        hello_world()
-
-
-# print hello
-def print_hello(name):
-
-# terminal: python3 hello.py
-# onemore optional task
-
-x = int(input("please write any natural number "))
-y = int(input("please write second natural number "))
-
-# min(x,y)
-
-if x < y:
-
-# terminal: python3 homework.py
-# onemore optional task
 
 x = int(input("please write any real number "))
 y = int(input("please write second real number "))
@@ -58,10 +36,10 @@ def len(iterable):
         lenght +=1
         return lenght
 
-
 print("Your word has " +str(iterable) + " signs")
 
 # multiply
+
 x = int(input("Please give first real number "))
 y = int(input("Please give second real number "))
 
@@ -70,8 +48,6 @@ def multiply(x, y):
         return 0
     elif y ==0:
         return 0
-
-
     else:
         return y + multiply(y, x-1)
 print ("They multiplied gives: " + str(multiply(x,y)))
