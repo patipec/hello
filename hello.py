@@ -1,5 +1,10 @@
-# hello
+# hello world function returning string
+def hello_world():
+    return ('Hello, World!')
 
+name=""
+
+# hello name
 def hello(name=""): #nadanie zmiennej default argument
     if len(name) > 0:
         return('Hello ' + name + "!")
@@ -11,16 +16,25 @@ print(hello())
 
 # print hello
 def print_hello(name=""): # musi byc ta defaultowa wartosc nadana gdyby nic nie bylo jako zmienna name
+    print(hello(name))
 
+print_hello(name)
 
-x = int(input("please write any real number "))
-y = int(input("please write second real number "))
+# terminal: python3 hello.py
+# onemore optional task
+
+x = int(input("please write any natural number "))
+y = int(input("please write second natural number "))
 
 # min(x,y)
-if x < 0:
-    print("I said REAL NUMBER")
-elif x < y:
 
+if x < y:
+    print("Less number is: " + str(x))
+else:
+    print("Less number is: " + str(y))
+
+
+# max(x,y)
 
 if x > y:
     print("Greater number is: " + str(x))
@@ -35,11 +49,9 @@ def len(iterable):
     for i in iterable:
         lenght +=1
         return lenght
-
 print("Your word has " +str(iterable) + " signs")
 
 # multiply
-
 x = int(input("Please give first real number "))
 y = int(input("Please give second real number "))
 
@@ -64,3 +76,4 @@ def power(x ,y):
 print("x powered by y gives: " + str(power(x,y)))
 
 # def divmod(x,y):
+
