@@ -67,7 +67,7 @@ def get_move(board, player):
 player =1
 
 
-def change_player():
+def change_player(player):
     while player == 1:
         mark = "X"
         player == 2
@@ -77,14 +77,17 @@ def change_player():
 
 
 def mark(board, player, row, col):
+    print("New board", board)
     if player == 1:
-        player = "X"
-    if player == 2:
-        player = "O"
+        board[row][col] = 'X'
+        # player = 2
+    elif player == 2:
+        board[row][col] = 'O'
+        # player = 1
+    # print(board)
+    print("After player turn board looks like: ", player)
+    return board, player
     
-
-
-
 
 def has_won(board, player):
     """Returns True if player has won the game."""
@@ -96,23 +99,25 @@ def is_full(board):
     return False
 
 
-def print_board():
-    mark = "."
-    b0 = ("  1   2   3  ")
-    b1 = f"A {mark} | {mark} | {mark}"
-    b2 = " ---+---+---"
-    b3 = f"B {mark} | {mark} | {mark}"
-    b4 = " ---+---+---"
-    b5 = f"B {mark} | {mark} | {mark}"
+def print_board(board, player=None):
+    
+    temp_board = []
+    print(temp_board)
+    for i in range(0,len(board)):
+        for j in range(0,len(board)):
+            if board[i][j] == 0:
+                temp_board.append('.')
+            else:
+                temp_board.append(board[i][j])
+    print("   1   2   3")
+    print("A  {0} | {1} | {2} \n  ---+---+---\nB  {3} | {4} | {5} \n  ---+---+---\nC  {6} | {7} | {8} \n ".format(temp_board[0], temp_board[1], temp_board[2], temp_board[3], temp_board[4], temp_board[5],temp_board[6], temp_board[7], temp_board[8]))
+    pass
 
-    # just to have it clear as lines:
-    print(b0) 
-    print(b1)
-    print(b2)
-    print(b3)
-    print(b4)
-    print(b5)
-print_board()
+
+board = [[0,0,0],[0,0,0],[0,0,0]]
+
+print_board(board)
+
     
 
 def print_result(winner):

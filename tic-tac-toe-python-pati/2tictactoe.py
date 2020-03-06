@@ -1,15 +1,7 @@
 import re, sys, random, time
 
-
 def init_board(): # DONE!
-    """Returns an empty 3-by-3 board (with zeros)."""
-    # board = [[0]*3]*3
-    # board = [['.','.','.'],['.','.','.'],['.','.','.']]
     board = [[0,0,0],[0,0,0],[0,0,0]]
-    # board = [[0,'X','O'],[0,'X',0],[0,'O',0]]
-
-    # print('new board: ', board)
-    # board = [[0,1,2],[3,4,5],[6,7,0]]
     return board
 
 def get_move(board, player):  # DONE!
@@ -149,7 +141,6 @@ def is_full(board): # DONE
 
 
 def print_board(board): # DONE
-    """Prints a 3-by-3 board on the screen with borders."""
     print('   1   2   3')
     for i in range(len(board)):
         if i<=len(board)-2:
@@ -158,17 +149,19 @@ def print_board(board): # DONE
         elif i==len(board)-1:
             var = str(chr(65+i) +'  '+ ' | '.join(map(str, board[i]))+'\n')
             print(re.sub(r"0", ".", var))
-
     pass
 
 
 def print_result(winner, who_plays=None): #Done
     if winner == 0:
-        return 'No one has won this game DRAW!'
+        with open('TicTacToe/graphics/draw.py','r') as draw:
+            return draw.read()
     elif winner == 1:
-        return "Congratulates the winner is {} !!!!".format(who_plays[0])
+        with open('TicTacToe/graphics/{}'.format(who_plays[0]),'r') as draw:
+            return draw.read()
     elif winner == 2:
-        return "Congratulates the winner is {} !!!!".format(who_plays[1])
+        with open('TicTacToe/graphics/{}'.format(who_plays[1]),'r') as draw:
+            return draw.read()
 
 
 def tictactoe_game(mode='HUMAN-HUMAN'):#DONE
@@ -176,17 +169,16 @@ def tictactoe_game(mode='HUMAN-HUMAN'):#DONE
     play = 1
 
     if mode == 'HUMAN-HUMAN':
-    # use get_move(), mark(), has_won(), is_full(), and print_board() to create game logic
         while is_full(board) != True:
             row, col = get_move(board, 1)
             board, play =  mark(board, play, row, col)
             print_board(board)
             play, flaga = has_won(board, play)
             if flaga == False:
-                print(print_result(play,['Player1', 'Player2']))
+                print(print_result(play, ['p1.py', 'p2.py']))
                 break
             if is_full(board) == True:
-                print(print_result(0,['Player1', 'Player2']))
+                print(print_result(0))
                 break
             play = switch_player(play)
 
@@ -205,10 +197,10 @@ def tictactoe_game(mode='HUMAN-HUMAN'):#DONE
             print_board(board)
             play, flaga = has_won(board, play)
             if flaga == False:
-                print(print_result(play,['Player', 'Computer']))
+                print(print_result(play,['p1.py', 'c1.py']))
                 break
             if is_full(board) == True:
-                print(print_result(0,['Player', 'Computer']))
+                print(print_result(0))
                 break
             play = switch_player(play)
         
@@ -227,7 +219,7 @@ def tictactoe_game(mode='HUMAN-HUMAN'):#DONE
             print_board(board)
             play, flaga = has_won(board, play)
             if flaga == False:
-                print(print_result(play, ['Computer','Player']))
+                print(print_result(play, ['com.py','p1.py']))
                 break
             if is_full(board) == True:
                 print(print_result(0))
@@ -243,7 +235,7 @@ def tictactoe_game(mode='HUMAN-HUMAN'):#DONE
             print_board(board)
             play, flaga = has_won(board, play)
             if flaga == False:
-                print(print_result(play,['Computer 1','Computer 2']))
+                print(print_result(play,['c1.py','c2.py']))
                 break
             if is_full(board) == True:
                 print(print_result(0))
@@ -277,4 +269,3 @@ def main_menu():
 if __name__ == '__main__':
     while True:
         main_menu()
-
