@@ -1,11 +1,13 @@
+import sys
+
+
 # ---------- Global variables
 
 winner = 0
+player = 1
+board = []
 
-
-
-
-#------------ How game looks like in code
+# ------------ How game looks like in code
 
 
 def tictactoe_game():
@@ -17,31 +19,57 @@ def tictactoe_game():
     winner = 0
     print_result
 
-   
-#---------- Functions --------
+#  ---------- Functions --------
+
+
 def init_board():
-    board = [[0, 0], [0, 1], [3, 0] ,
-             1,0 1, 1,
-             0, 0, 0]
+    board = [[0, 0, 0],
+             [0, 0, 0],
+             [0, 0, 0]]
     return board
 
 
-def get_move():
-    row =[0,1,2
-         ]
-    row, col = 0, 0
-    return row, col
+def get_move(board, player):
+    # give row
+    print("Please give row letter: ")
+    row_n = input().upper()
+
+    def row_number(row_n):  # convert letter to number
+        if row_n == "A":
+            row_n = 0
+            return(row_n)
+        elif row_n == "B":
+            row_n = 1
+            return(row_n)
+        elif row_n == "C":
+            row_n = 3
+            return(row_n)
+
+    row = row_number(row_n) 
+    print("Please give column number: ")  # give col
+    col = input()
+
+    def check_if_valid(row, col):
+        if row not in (0, 1, 2):
+            print("Please give right coordinates, eg. A and 1")
+        elif col != "A" or col != "B" or col != "C":
+            print("Please give right coordinates, eg. A and 1")
+
+    check_if_valid(row, col)
+    col = int(col)
+    return(row, col)
+    # def if_valid_coords():
 
 
-def get_ai_move(board, player):
-    """Returns the coordinates of a valid move for player on board."""
-    row, col = 0, 0
-    return row, col
+# def get_ai_move(board, player):
+#     """Returns the coordinates of a valid move for player on board."""
+#     row, col = 0, 0
+#     return row, col
 
 
 def mark(board, player, row, col):
-    """Marks the element at row & col on the board for player."""
-    pass
+    if player == 1:
+    
 
 
 def has_won(board, player):
@@ -61,17 +89,15 @@ def print_board():
     print("B . | . | . ")
     print("------------")
     print("C . | . | . ")
-   
+
 
 def print_result(winner):
     """Congratulates winner or proclaims tie (if winner equals zero)."""
     pass
 
 
-
-
 def main_menu():
-    tictactoe_game('HUMAN-HUMAN')
+    tictactoe_game()
 
 
 if __name__ == '__main__':
