@@ -63,7 +63,10 @@ def get_move(board, player):
 #     """Returns the coordinates of a valid move for player on board."""
 #     row, col = 0, 0
 #     return row, col
+
 player =1
+
+
 def change_player():
     while player == 1:
         mark = "X"
@@ -72,11 +75,15 @@ def change_player():
         mark = "O"
         player == 1
 
+
 def mark(board, player, row, col):
     if player == 1:
-        player == 2
+        player = "X"
+    if player == 2:
+        player = "O"
     
-    
+
+
 
 
 def has_won(board, player):
