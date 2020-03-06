@@ -1,5 +1,3 @@
-import sys
-
 
 # ---------- Global variables
 
@@ -65,10 +63,19 @@ def get_move(board, player):
 #     """Returns the coordinates of a valid move for player on board."""
 #     row, col = 0, 0
 #     return row, col
-
+player =1
+def change_player():
+    while player == 1:
+        mark = "X"
+        player == 2
+    while player == 2:
+        mark = "O"
+        player == 1
 
 def mark(board, player, row, col):
     if player == 1:
+        player == 2
+    
     
 
 
@@ -83,13 +90,23 @@ def is_full(board):
 
 
 def print_board():
-    print("  1   2   3 ") 
-    print("A . | . | . ")
-    print("------------")
-    print("B . | . | . ")
-    print("------------")
-    print("C . | . | . ")
+    mark = "."
+    b0 = ("  1   2   3  ")
+    b1 = f"A {mark} | {mark} | {mark}"
+    b2 = " ---+---+---"
+    b3 = f"B {mark} | {mark} | {mark}"
+    b4 = " ---+---+---"
+    b5 = f"B {mark} | {mark} | {mark}"
 
+    # just to have it clear as lines:
+    print(b0) 
+    print(b1)
+    print(b2)
+    print(b3)
+    print(b4)
+    print(b5)
+print_board()
+    
 
 def print_result(winner):
     """Congratulates winner or proclaims tie (if winner equals zero)."""
