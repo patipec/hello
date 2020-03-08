@@ -10,19 +10,18 @@ board = []
 # ------------ How game looks like in code
 
 
-def tictactoe_game():
+def tictactoe_game(ai):
     player = 1
     board = init_board()
     print_board(board)
-    ai = 2
-
+    
     while has_won(board, player) is False and is_full(board) is False:
         if player == 1:
             print("X's turn")
         else:
             print("O's turn")
         if ai and player == 2:
-             row, col = get_ai_move(board)
+            row, col = get_ai_move(board)
         else:
             row, col = get_move(board, player)
         mark(board, player, row, col)
@@ -78,28 +77,27 @@ def get_move(board, player):
             print("Please give right coordinates, eg. A and 1")
         else:
             valid = False
-            if is_free(board, row, col):
+            if not is_free(board, row, col):
                 print("This position is occupated")
                 valid = True
     return row, col
 
 
 def is_free(board, row, col):
-    if board[row][col] != 0:
-        return False
-    else: 
+    if board[row][col] == 0:
         return True
+    else: 
+        return False
 
 
 def get_ai_move(board):
-    row, col = 0, 0
     free = False
-    while not free: 
+    while not free:
         ai_choose_row = random.randint(0, 2)
         ai_choose_col = random.randint(0, 2)
-        if is_free(board, row, col):
+        if is_free(board, ai_choose_row, ai_choose_col):
             row = ai_choose_row
-            col = ai_choose_row
+            col = ai_choose_col
             free = True
     return row, col
 
@@ -191,8 +189,10 @@ def main_menu():
     choose = input().upper()
     
     if choose == "1":
-        tictactoe_game()
+        tictactoe_game(player=1)
     if choose == "2":
+        ai = 2
+        tictactoe_game(ai)
         print("To be continued")
     if choose == "QUIT":
         sys.exit()
