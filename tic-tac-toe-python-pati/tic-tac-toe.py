@@ -1,4 +1,5 @@
 import sys
+import random
 
 # ---------- Global variables
 
@@ -13,16 +14,21 @@ def tictactoe_game():
     player = 1
     board = init_board()
     print_board(board)
+    ai = 2
+
     while has_won(board, player) is False and is_full(board) is False:
         if player == 1:
             print("X's turn")
         else:
             print("O's turn")
-        row, col = get_move(board, player)
+        if ai and player == 2:
+             row, col = get_ai_move(board)
+        else:
+            row, col = get_move(board, player)
         mark(board, player, row, col)
         if has_won(board, player):
             print_result(player)
-        if is_full(board):
+        elif is_full(board):
             player = 0
             print_result(player)
         if player == 2:
@@ -72,14 +78,29 @@ def get_move(board, player):
             print("Please give right coordinates, eg. A and 1")
         else:
             valid = False
-            if board[row][col] != 0:
-                print("This position if occupated")
+            if is_free(board, row, col):
+                print("This position is occupated")
                 valid = True
     return row, col
 
 
-#def get_ai_move(board, player):
+def is_free(board, row, col):
+    if board[row][col] != 0:
+        return False
+    else: 
+        return True
+
+
+def get_ai_move(board):
     row, col = 0, 0
+    free = False
+    while not free: 
+        ai_choose_row = random.randint(0, 2)
+        ai_choose_col = random.randint(0, 2)
+        if is_free(board, row, col):
+            row = ai_choose_row
+            col = ai_choose_row
+            free = True
     return row, col
 
 
@@ -164,12 +185,15 @@ def print_result(winner):
 
 def main_menu():
     print("Please choose option:\n")
-    print("Human - Human - 'H'")
+    print("Choose 1 to start Human - Human game")
+    print("Choose 2 to start Human - AI")
     print("To quit write 'quit'")
     choose = input().upper()
     
-    if choose == "H":
+    if choose == "1":
         tictactoe_game()
+    if choose == "2":
+        print("To be continued")
     if choose == "QUIT":
         sys.exit()
 
